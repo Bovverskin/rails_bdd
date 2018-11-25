@@ -16,5 +16,13 @@
         <% @comments.each do |comment| %>
             <p><%= comment.comment %></p>
         <% end %>
-    </div>  
+    </div>
+    <script>
+        const channel = pusher.subscribe('comment-channel');
+        channel.bind('new-comment', function(data) {
+            let comment = data.comment;
+            const div = document.getElementById('comment_section');
+            div.innerHTML += `<p> ${comment} </p>`;
+        });
+    </script>
 </div>
