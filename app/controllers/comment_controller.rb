@@ -2,6 +2,9 @@ class CommentController < ApplicationController
   def store
     @comment = Comment.new(comment_params)
     @comment.save
+      Pusher.trigger('comment-channel','new-comment', {
+        comment: @comment.comment
+      })
     redirect_to '/'
   end
 

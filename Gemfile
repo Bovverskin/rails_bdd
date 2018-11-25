@@ -23,6 +23,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
+  gem 'pusher'
 end
 
 group :development do
